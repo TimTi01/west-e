@@ -1,4 +1,6 @@
 const { Education } = require("../models/models")
+const Sequelize = require('sequelize')
+const Op = Sequelize.Op
 
 class EducationController {
     async getAll(req, res, next) {

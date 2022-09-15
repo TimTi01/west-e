@@ -16,14 +16,14 @@ class EmployeeController {
             where:{ 
                 full_name: { [Op.startsWith]: full_name }
             },
-            include: [
-                {
-                    model: Post
-                },
-                {
-                    model: Education
-                }
-            ]
+            // include: [
+            //     {
+            //         model: Post
+            //     },
+            //     {
+            //         model: Education
+            //     }
+            // ]
         })
 
         return res.json(employees)
