@@ -22,8 +22,8 @@ class EducationController {
     }
 
     async create(req, res, next) {
-        const {education_name, employeeId} = req.body
-        const education = await Education.create({education_name, employeeId})
+        const {education_name} = req.body
+        const education = await Education.create({education_name})
         return res.json(education)
     }
 }

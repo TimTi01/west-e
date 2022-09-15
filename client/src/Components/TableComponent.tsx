@@ -20,10 +20,18 @@ export const TableComponent:FC = () => {
                 <TableBody>
                     {
                         employees?.rows.map((employee) => (
-                            <TableRow key={employee.id}>
-                                <TableCell align="left">{employee.full_name}</TableCell>
-                                <TableCell align="left">{employee.posts[0].post_name}</TableCell>
-                                <TableCell align="left">{employee.education[0].education_name}</TableCell>
+                            <TableRow key={employee.id}
+                                      sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                            >
+                                <TableCell align="left">
+                                    {employee.full_name}
+                                </TableCell>
+                                <TableCell align="left">
+                                    {employee.post.post_name}
+                                </TableCell>
+                                <TableCell align="left">
+                                    {employee.education.education_name}
+                                </TableCell>
                             </TableRow>   
                         ))
                     }

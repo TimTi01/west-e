@@ -22,8 +22,8 @@ class PostController {
     }
 
     async create(req, res, next) {
-        const {post_name, employeeId} = req.body
-        const post = await Post.create({post_name, employeeId})
+        const {post_name} = req.body
+        const post = await Post.create({post_name})
         return res.json(post)
     }
 }

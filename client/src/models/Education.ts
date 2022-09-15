@@ -6,7 +6,10 @@ export interface Education {
 export interface EducationRow {
     id:             number;
     education_name: string;
-    createdAt:      string;
-    updatedAt:      string;
-    employeeId:     number;
+}
+
+export interface EducationReq {
+    limit?: number, 
+    page?: number, 
+    education_name?: string
 }

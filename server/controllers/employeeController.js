@@ -16,22 +16,25 @@ class EmployeeController {
             where:{ 
                 full_name: { [Op.startsWith]: full_name }
             },
-            // include: [
-            //     {
-            //         model: Post
-            //     },
-            //     {
-            //         model: Education
-            //     }
-            // ]
+            include: [
+                {
+                    model: Post
+                },
+                {
+                    model: Education
+                }
+            ]
         })
 
         return res.json(employees)
     }
 
     async create(req, res, next) {
-        const {full_name} = req.body
-        const employee = await Employee.create({full_name})
+        const {full_name, postId, educationId} = req.body
+
+        console.log('req.body: ', req.body)
+
+        const employee = await Employee.create({full_name, postId, educationId})
         return res.json(employee)
     }
 }

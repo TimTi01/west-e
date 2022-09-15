@@ -15,8 +15,7 @@ export interface EmployeeReq {
 export interface EmployeeRow {
     id:        number;
     full_name: string;
-    createdAt: string;
-    updatedAt: string;
-    posts:     PostRow[];
-    education: EducationRow[];
+    post:     PostRow;
+    education: EducationRow;
 }
+

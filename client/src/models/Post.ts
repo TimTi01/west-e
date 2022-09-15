@@ -6,7 +6,10 @@ export interface Post {
 export interface PostRow {
     id:         number;
     post_name:  string;
-    createdAt:  string;
-    updatedAt:  string;
-    employeeId: number;
+}
+
+export interface PostReq {
+    limit?: number, 
+    page?: number, 
+    post_name?: string
 }
