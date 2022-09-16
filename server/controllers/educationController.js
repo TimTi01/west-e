@@ -26,6 +26,37 @@ class EducationController {
         const education = await Education.create({education_name})
         return res.json(education)
     }
+
+    async delete(req, res, next) {
+        try {
+            const {id} = req.params
+            const findEducationById = await Education.findOne({ where: {id: `${id}`} })
+            
+            if (!findEducationById) {
+                res.status(404).send({
+                    status: 'error',
+                    message: `Education with id: ${id} not found`
+                })
+            }
+            
+            const deleteEducation = await findEducationById.destroy()
+            
+            if (!deleteEducation) {
+                res.status(503).send({
+                    status: 'error',
+                    message: `Education with id: ${id} failed deleted`
+                })
+            }
+            
+            res.status(200).send({
+                status: 'success',
+                message: `Education with id ${id} deleted`
+            })
+
+        } catch (error) {
+            next(error);
+        }
+    }
 }
 
 module.exports = new EducationController()

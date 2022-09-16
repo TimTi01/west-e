@@ -26,6 +26,37 @@ class PostController {
         const post = await Post.create({post_name})
         return res.json(post)
     }
+
+    async delete(req, res, next) {
+        try {
+            const {id} = req.params
+            const findPostById = await Post.findOne({ where: {id: `${id}`} })
+            
+            if (!findPostById) {
+                res.status(404).send({
+                    status: 'error',
+                    message: `Post with id: ${id} not found`
+                })
+            }
+            
+            const deletePost = await findPostById.destroy()
+            
+            if (!deletePost) {
+                res.status(503).send({
+                    status: 'error',
+                    message: `Post with id: ${id} failed deleted`
+                })
+            }
+            
+            res.status(200).send({
+                status: 'success',
+                message: `Post with id ${id} deleted`
+            })
+
+        } catch (error) {
+            next(error);
+        }
+    }
 }
 
 module.exports = new PostController()

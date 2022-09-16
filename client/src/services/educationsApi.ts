@@ -27,8 +27,22 @@ export const educationsApi = createApi({
                     method: "POST",
                 }
             },
+            invalidatesTags: ['Educations']
+        }),
+        deteleEducation: build.mutation({
+            query: (id) => {
+                return {
+                    url: `/delete/${id}`,
+                    method: "DELETE",
+                }
+            },
+            invalidatesTags: ['Educations']
         }),
     })
 })
 
-export const {useFetchAllEducationsQuery, useCreateEducationMutation} = educationsApi 
+export const {
+    useFetchAllEducationsQuery, 
+    useCreateEducationMutation,
+    useDeteleEducationMutation
+} = educationsApi 

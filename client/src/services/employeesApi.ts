@@ -1,5 +1,5 @@
 import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/dist/query/react"
-import { Employee, EmployeeReq } from "../models/Employee"
+import { Employee, EmployeeEdit, EmployeeReq } from "../models/Employee"
 
 export const employeesApi = createApi({
     reducerPath: 'employeesApi',
@@ -18,17 +18,48 @@ export const employeesApi = createApi({
             providesTags: ['Employees']
         }),
         createEmployee: build.mutation({
-            query: ({full_name}) => {
+            query: ({full_name, postId, educationId}) => {
                 return {
                     url: `/create`,
                     body: {
-                        full_name
+                        full_name,
+                        postId,
+                        educationId
                     },
                     method: "POST",
                 }
             },
+            invalidatesTags: ['Employees']
+        }),
+        deteleEmployee: build.mutation({
+            query: (id) => {
+                return {
+                    url: `/delete/${id}`,
+                    method: "DELETE",
+                }
+            },
+            invalidatesTags: ['Employees']
+        }),
+        updateEmployee: build.mutation<EmployeeEdit, EmployeeEdit>({
+            query: ({id, full_name, postId, educationId}) => {
+                return {
+                    url: `/update/${id}`,
+                    method: "PUT",
+                    body: {
+                        full_name,
+                        postId,
+                        educationId
+                    }
+                }
+            },
+            invalidatesTags: ['Employees']
         }),
     })
 })
 
-export const {useFetchAllEmployeesQuery, useCreateEmployeeMutation} = employeesApi 
+export const {
+    useFetchAllEmployeesQuery, 
+    useCreateEmployeeMutation,
+    useDeteleEmployeeMutation,
+    useUpdateEmployeeMutation
+} = employeesApi 

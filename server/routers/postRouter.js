@@ -1,10 +1,12 @@
 const Router = require('express')
-const { getAll, create } = require('../controllers/postController')
+const postController = require('../controllers/postController')
 const router = new Router()
 
 // api/post/getAll
-router.get('/getAll', getAll)
+router.get('/getAll', postController.getAll)
 // api/post/create
-router.post('/create', create)
+router.post('/create', postController.create)
+// api/post/create
+router.delete('/delete/:id', postController.delete)
 
 module.exports = router

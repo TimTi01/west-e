@@ -19,3 +19,9 @@ export interface EmployeeRow {
     education: EducationRow;
 }
 
+export interface EmployeeEdit {
+    id: number
+    full_name: string
+    postId: number 
+    educationId: number
+}
