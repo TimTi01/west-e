@@ -28,13 +28,16 @@ export const PostDialog:FC<PostDialogProps> = ({openPostDialog, setOpenPostDialo
             aria-labelledby="post-dialog-title"
             aria-describedby="alert-dialog-description"
         >
-            <DialogTitle id="post-dialog-title">
+            <DialogTitle id="post-dialog-title"
+                         sx={{background: 'aliceblue'}}
+            >
                 {"Должности(Удаление и редактирование)"}
             </DialogTitle>
             <Divider />
-            <DialogContent>
+            <DialogContent sx={{background: 'aliceblue'}}>
                 <Grid container
                     direction='column'
+                    spacing={1}
                 >
                     <Grid item>
                         <ButtonGroup>
@@ -123,11 +126,16 @@ export const PostDialog:FC<PostDialogProps> = ({openPostDialog, setOpenPostDialo
                         : <></>
                 }
             </DialogContent>
-            <DialogActions>
-                <Button onClick={() => setOpenPostDialog(false)} autoFocus>
+            <DialogActions sx={{background: 'aliceblue'}}>
+                <Button onClick={() => setOpenPostDialog(false)} 
+                        autoFocus
+                        variant='outlined'
+                >
                     Ок
                 </Button>
-                <Button onClick={() => setOpenPostDialog(false)}>
+                <Button onClick={() => setOpenPostDialog(false)}
+                        variant='outlined'
+                >
                     Отмена
                 </Button>
             </DialogActions>

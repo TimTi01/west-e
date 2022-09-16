@@ -52,6 +52,7 @@ export const EmployeeAddDialog:FC<EmployeeAddDialogProps> = ({open, setOpen}) =>
             <DialogContent>
                 <Grid container
                     direction='column'
+                    spacing={1}
                 >
                     <Grid item>
                         <TextField 

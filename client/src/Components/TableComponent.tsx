@@ -23,28 +23,40 @@ export const TableComponent:FC<TableComponentProps> = ({isChekedId, setIsChecked
                 </TableHead>
                 <TableBody>
                     {
-                        employees?.rows.map((employee) => (
-                            <TableRow key={employee.id}
-                                      sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                            >
-                                <TableCell>
-                                    <Checkbox
-                                        color="primary"
-                                        checked={isChekedId === employee.id}
-                                        onClick={() => setIsCheckedId(employee.id)}
-                                    />
-                                </TableCell>
-                                <TableCell align="left">
-                                    {employee.full_name}
-                                </TableCell>
-                                <TableCell align="left">
-                                    {employee.post?.post_name}
-                                </TableCell>
-                                <TableCell align="left">
-                                    {employee.education?.education_name}
-                                </TableCell>
-                            </TableRow>   
-                        ))
+                        !employees?.rows
+                            ? employees?.rows.map((employee) => (
+                                <TableRow key={employee.id}
+                                          sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                                >
+                                    <TableCell>
+                                        <Checkbox
+                                            color="primary"
+                                            checked={isChekedId === employee.id}
+                                            onClick={() => setIsCheckedId(employee.id)}
+                                        />
+                                    </TableCell>
+                                    <TableCell align="left">
+                                        {employee.full_name}
+                                    </TableCell>
+                                    <TableCell align="left">
+                                        {employee.post?.post_name}
+                                    </TableCell>
+                                    <TableCell align="left">
+                                        {employee.education?.education_name}
+                                    </TableCell>
+                                </TableRow>   
+                              ))
+                            :   <TableRow
+                                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                                >
+                                    <TableCell 
+                                        colSpan={4}
+                                        align='center'
+                                        sx={{color: '#2e7d32'}}
+                                    >
+                                        ДОБАВЬТЕ СОТРУДНИКА!
+                                    </TableCell>
+                                </TableRow>
                     }
                 </TableBody>
             </Table>

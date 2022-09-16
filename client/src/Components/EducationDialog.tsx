@@ -28,13 +28,16 @@ export const EducationDialog:FC<EducationDialogProps> = ({openEducationDialog, s
             aria-labelledby="post-dialog-title"
             aria-describedby="alert-dialog-description"
         >
-            <DialogTitle id="post-dialog-title">
+            <DialogTitle id="post-dialog-title" 
+                         sx={{background: 'aliceblue'}}
+            >
                 {"Образование(Удаление и редактирование)"}
             </DialogTitle>
             <Divider />
-            <DialogContent>
+            <DialogContent sx={{background: 'aliceblue'}}>
                 <Grid container
                     direction='column'
+                    spacing={1}
                 >
                     <Grid item>
                         <ButtonGroup>
@@ -123,11 +126,16 @@ export const EducationDialog:FC<EducationDialogProps> = ({openEducationDialog, s
                         : <></>
                 }
             </DialogContent>
-            <DialogActions>
-                <Button onClick={() => setOpenEducationDialog(false)} autoFocus>
+            <DialogActions sx={{background: 'aliceblue'}}>
+                <Button onClick={() => setOpenEducationDialog(false)} 
+                        autoFocus
+                        variant='outlined'
+                >
                     Ок
                 </Button>
-                <Button onClick={() => setOpenEducationDialog(false)}>
+                <Button onClick={() => setOpenEducationDialog(false)}
+                        variant='outlined'
+                >
                     Отмена
                 </Button>
             </DialogActions>
