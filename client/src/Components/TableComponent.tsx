@@ -23,7 +23,7 @@ export const TableComponent:FC<TableComponentProps> = ({isChekedId, setIsChecked
                 </TableHead>
                 <TableBody>
                     {
-                        !employees?.rows
+                        employees?.count !== 0 
                             ? employees?.rows.map((employee) => (
                                 <TableRow key={employee.id}
                                           sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
